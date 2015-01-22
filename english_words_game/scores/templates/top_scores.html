@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Top Scores List</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Score</th>
+			<th>User</th>
+			<th>Word</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for score in scores %}
+		<tr>
+			<td>{{ score.word_score }}</td>
+			<td>{{ score.user.username }}</td>
+			<td>{{ score.word }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<a href="{% url 'word-submission' %}">Want to submit?</a>
+{% endblock %}
