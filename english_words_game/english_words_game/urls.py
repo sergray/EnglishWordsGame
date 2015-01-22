@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     #url(r'^admin/', include(admin.site.urls)),
     url('^$', 'words.views.word_submission', name='word-submission'),
     # url('^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/login', 'django.contrib.auth.views.login',
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login',
         {'extra_context': {'next': '/'}}, name='login'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
 )

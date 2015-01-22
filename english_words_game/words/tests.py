@@ -1,8 +1,10 @@
 # coding=utf8
 "Tests for words application"
+import urlparse
 
 from django.test import Client, TestCase
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 from words.forms import EnglishWordForm
 
@@ -42,11 +44,33 @@ class TestWordSubmissionView(TestCase):
     def setUp(self):
         self.client = Client()
         self.test_url = reverse('word-submission')
+        self.password = 'test'
+        self.test_user = User(username='test')
+        self.test_user.set_password(self.password)
+        self.test_user.save()
+
+    def login(self):
+        login_data = {
+            'username': self.test_user.username,
+            'password': self.password,
+        }
+        return self.client.post(reverse('login'), login_data)
+
+    def assertLoginRedirect(self, response):
+        self.assertEqual(response.status_code, 302)
+        redirect = urlparse.urlsplit(response['Location'])
+        self.assertEqual(redirect.path, reverse('login'))
+
+    def test_login_required(self):
+        response = self.client.get(self.test_url)
+        self.assertLoginRedirect(response)
 
     def test_get(self):
+        self.login()
         response = self.client.get(self.test_url)
         self.assertEqual(response.status_code, 200)
 
     def test_post(self):
+        self.login()
         response = self.client.post(self.test_url, data={'english_word': 'Netherlands'})
         self.assertEqual(response.status_code, 200)
