@@ -4,9 +4,12 @@
 	<title>English Word Game - Submit a word!</title>
 </head>
 <body>
+<h1>English Word Game</h1>
+<h2>Try to enter the longest word!</h2>
 <form method="post" action="{% url 'word-submission' %}">
 {% csrf_token %}
-{{ form }}
+{{ form }}<br />
+<input type="submit" value="Submit">
 </form>
 </body>
 </html>
