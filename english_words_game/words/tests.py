@@ -1,7 +1,8 @@
 # coding=utf8
 "Tests for words application"
 
-from django.test import TestCase
+from django.test import Client, TestCase
+from django.core.urlresolvers import reverse
 
 from words.forms import EnglishWordForm
 
@@ -34,3 +35,14 @@ class TestEnglishWordForm(TestCase):
         self.assertEqual(
             form.errors,
             {'english_word': [u'The word is not English']})
+
+
+class TestWordSubmissionView(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.test_url = reverse('word-submission')
+
+    def test_get(self):
+        response = self.client.get(self.test_url)
+        self.assertEqual(response.status_code, 200)

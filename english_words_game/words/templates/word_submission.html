@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>English Word Game - Submit a word!</title>
+</head>
+<body>
+<form method="post" action="{% url 'word-submission' %}">
+{% csrf_token %}
+{{ form }}
+</form>
+</body>
+</html>
