@@ -1,31 +1,23 @@
 English Words Game
 ==================
 
-Submit the longest Egnlish word as you can (and what is known by us).
+Submit the longest English word known to you (and to the application).
 
-Submission requires registration, but it's easy and fast.
+Submission requires registration, but it's easy and straighforward.
+
 
 Setup Instructions
 ------------------
 
-$ virtualenv env
-$ source env/bin/activate
-$ pip install -r requirements.txt
+There's setup.py script which automates installation on Linux distributives having APT package manager.
 
-Setup NLTK corpora::
+It should be started from the root project directory:
 
-   import nltk
-   nltk.download()
+```
+python setup.py
+```
 
-
-Shows Tk GUI. selected wordnet corpora. Downloads to $HOME/nltk_data directory by default::
-
-    $ du -hs $HOME/nltk_data/corpora/wordnet
-    35M /Users/sergray/nltk_data/corpora/wordnet
-
-$ cd english_words_game/
-$ ./manange.py syncdb  # creates sqlite3 database
-$ ./manage.py runserver
+Please follow instructions at the end of setup script.
 
 
 Implementation Details
@@ -45,10 +37,8 @@ Implementation Details
 To Do List
 ----------
 
-* Add Makefile setting up the project
-
-* Automate downloading of wordnet corpora, see nltk.download spec::
-
-    nltk.download(self, info_or_id=None, download_dir=None, quiet=False, force=False, prefix=u'[nltk_data] ', halt_on_error=True, raise_on_error=False)
-
 * Add more tests. Coverage is poor at the moment :(
+
+* Bootstrap project with Makefile or Docker
+
+* Support automated setup on Linux distributives without APT. Use cuisine, salt, pupet or chef.
