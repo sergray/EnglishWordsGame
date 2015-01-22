@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>English Word Game - Submit a word!</title>
-</head>
-<body>
-<h1>English Word Game</h1>
-<h2>Try to enter the longest word!</h2>
+{% extends "base.html" %}
+
+{% block title %}English Word Game - Submit a word!{% endblock %}
+{% block content %}
+<h1>Welcome, {{ user.username }}!</h1>
+<p>Let's play in English Words Game.
+Try to enter the longest English word</p>
 <form method="post" action="{% url 'word-submission' %}">
-{% csrf_token %}
-{{ form }}<br />
-<input type="submit" value="Submit">
+	{% csrf_token %}
+	{{ form }}<br />
+	<input type="submit" value="Submit">
 </form>
 </body>
-</html>
+{% endblock %}

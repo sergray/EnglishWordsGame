@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}English Words Game - Registration{% endblock %}
+
+{% block content %}
+<h2>Thank you for registration!</h2>
+<p>You can now <a href="{% url 'django.contrib.auth.views.login' %}">sign-in</a></p>
+{% endblock %}

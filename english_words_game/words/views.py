@@ -2,9 +2,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.models import User
+
 from words.forms import EnglishWordForm
 
 
+@login_required
 def word_submission(request):
     if request.method == 'POST':
         form = EnglishWordForm(request.POST)
