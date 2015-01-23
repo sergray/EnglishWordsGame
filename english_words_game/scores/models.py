@@ -18,19 +18,25 @@ class Score(models.Model):
                                         blank=True, db_index=True)
     word = models.TextField()
 
+    @staticmethod
+    def filter_by_day(queryset, day=None):
+        if not day:
+            day = datetime.date.today()
+        next_day = day + datetime.timedelta(days=1)
+        return queryset.filter(
+            submitted_on__gte=day, submitted_on__lt=next_day)
+
     @classmethod
     def top_daily_scores(cls, day, count=10):
         "Return top scores for given day"
-        next_day = day + datetime.timedelta(days=1)
-        return cls.objects\
-            .select_related('user')\
-            .filter(submitted_on__gte=day, submitted_on__lt=next_day)\
+        queryset = cls.objects.select_related('user')
+        return Score.filter_by_day(queryset, day)\
             .order_by('-word_score')[:count]
 
     @classmethod
     def get_top_score(cls, user=None):
         "Return top score object"
-        scores = cls.objects
+        scores = Score.filter_by_day(cls.objects)
         if user:
             # only personal best are stored, so omit sorting
             scores = scores.filter(user=user)
@@ -46,3 +52,7 @@ class Score(models.Model):
         "Return calculated score of submitted word"
         # TODO may be better to extract from the model
         return len(word)
+
+    def __unicode__(self):
+        return u'#{o.id} with {o.word_score} for {o.word}'\
+               ' by {o.user_id} on {o.submitted_on}'.format(o=self)
