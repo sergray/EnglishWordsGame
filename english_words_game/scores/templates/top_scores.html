@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Top Scores List</h1>
+{{ block.super }}
+<div>Do you know the longer English word, <a href="{% url 'word-submission' %}">why not submit?</a></div>
+<h2>Top Scores Today</h2>
+{% if scores.count %}
 <table>
 	<thead>
 		<tr>
@@ -20,5 +23,7 @@
 		{% endfor %}
 	</tbody>
 </table>
-<a href="{% url 'word-submission' %}">Want to submit?</a>
+{% else %}
+<p>No submissions today yet.</p>
+{% endif %}
 {% endblock %}

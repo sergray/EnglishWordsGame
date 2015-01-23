@@ -20,5 +20,5 @@ class EnglishWordForm(forms.Form):
     def clean_english_word(self):
         word = self.cleaned_data['english_word']
         if not wordnet.synsets(word):
-            raise forms.ValidationError(_("The word is not English"))
+            raise forms.ValidationError(_("The word is not English or unknown to us yet :("))
         return word

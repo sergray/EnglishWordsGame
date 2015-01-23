@@ -15,7 +15,6 @@ class TestEnglishWordForm(TestCase):
     def test_empty(self):
         form = EnglishWordForm()
         self.assertFalse(form.is_valid())
-        # import ipdb; ipdb.set_trace()
         self.assertEqual(form.errors, {})  # need to investigate why it's empty
 
     def test_min_length(self):
@@ -36,7 +35,7 @@ class TestEnglishWordForm(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEqual(
             form.errors,
-            {'english_word': [u'The word is not English']})
+            {'english_word': [u'The word is not English or unknown to us yet :(']})
 
 
 class TestWordSubmissionView(TestCase):

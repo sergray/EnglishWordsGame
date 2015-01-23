@@ -3,7 +3,8 @@
 {% block title %}English Words Game - Registration{% endblock %}
 
 {% block content %}
-<h2>English Words Game - Registration</h2>
+{{ block.super }}
+<h2>Registration</h2>
 <form method="post">
 {% csrf_token %}
 <table>

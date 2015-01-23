@@ -2,17 +2,16 @@
 
 {% block title %}English Word Game - Submit a word!{% endblock %}
 {% block content %}
-<h1>Welcome, {{ user.username }}!</h1>
+{{ block.super }}
 
 {% if overall_record %}
 	<h2>{{ word_score }}!!! It's an absolute record!</h2>
 	<p>Maybe another try? ;)</p>
 {% elif personal_best %}
 	<h2>Congratulations! You've made a personal record, with {{ word_score}}!</h2>
-	<p>I know, you can do even better. Go on! :)</p>
+	<p>I know, you can do even better. Go on!</p>
 {% else %}
-	<p>Let's play in English Words Game.
-	Try to enter the longest English word</p>
+<p>Welcome, {{ user.username }}! Try to submit the longest English word.</p>
 {% endif %}
 
 <form method="post" action="{% url 'word-submission' %}">
@@ -21,7 +20,7 @@
 	<input type="submit" value="Submit">
 </form>
 <div>
-	Or check <a href="{% url 'top-scores' %}">top scores</a>
+	You can also <a href="{% url 'top-scores' %}">check top scores today.</a>
 </div>
 </body>
 {% endblock %}

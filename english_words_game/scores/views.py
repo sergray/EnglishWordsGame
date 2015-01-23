@@ -11,5 +11,5 @@ from scores.models import Score
 def top_scores_list(request):
     "View shows top 10 daily scores even for non logged users"
     today = datetime.date.today()
-    top10 = Score.top_daily_scores(today, 10)
+    top10 = list(Score.top_daily_scores(today, 10))
     return render(request, 'top_scores.html', dict(scores=top10))
