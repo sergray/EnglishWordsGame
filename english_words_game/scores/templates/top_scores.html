@@ -4,7 +4,7 @@
 {{ block.super }}
 <div>Do you know the longer English word, <a href="{% url 'word-submission' %}">why not submit?</a></div>
 <h2>Top Scores Today</h2>
-{% if scores.count %}
+{% if scores|length %}
 <table>
 	<thead>
 		<tr>
