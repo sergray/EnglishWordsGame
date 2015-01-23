@@ -29,8 +29,6 @@ Implementation Details
 
 * Application uses Python NLTK library and Wordnet text corpora to determine if submitted word is English. It's obvious that coropora does not include all known or invented English words (check Hitch-Hiker's Guide of Douglas Adams for nice examples). Therefore custom corpora might be needed.
 
-* NLTK seems to load corpora to the memory on the first use. It makes the first request slow and must be fixed, loading corpora on application start before the first request.
-
 * Load of corpora to the memory affects requirements to system memory and limits number of Python processes running the app. In order to scale, it can be implemented as separate service running on multiple machines.
 
 
