@@ -2,7 +2,7 @@
 
 {% block content %}
 {{ block.super }}
-<div>Do you know the longer English word, <a href="{% url 'word-submission' %}">why not submit?</a></div>
+<div>Do you want <a href="{% url 'word-submission' %}">submit the longest English word?</a></div>
 <h2>Top Scores Today</h2>
 {% if scores|length %}
 <table>

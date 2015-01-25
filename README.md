@@ -5,6 +5,8 @@ Submit the longest English word known to you (and to the application).
 
 Submission requires registration, but it's easy and straighforward.
 
+Can be played on http://words.sergray.me/
+
 
 Setup Instructions
 ------------------
@@ -40,3 +42,7 @@ To Do List
 * Bootstrap project with Makefile or Docker
 
 * Support automated setup on Linux distributives without APT. Use cuisine, salt, pupet or chef.
+
+* Password-less registration with Facebook.
+
+* All time top-scores
