@@ -8,3 +8,6 @@ run:
 
 qa:
 	(cd $(PROJECT) && ./manage.py test)
+
+deploy:
+	(cd ./ansible && ansible-playbook -i inventory.ini deploy.yml)

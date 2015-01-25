@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  tasks:
+    - command: git pull
+      args:
+        chdir: ~/EnglishWordsGame
+      notify:
+        - restart uwsgi
+  handlers:
+    - name: restart uwsgi
+      service: name=uwsgi state=restarted
+      sudo: yes
