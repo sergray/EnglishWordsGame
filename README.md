@@ -25,9 +25,9 @@ Please follow instructions at the end of setup script.
 Implementation Details
 ----------------------
 
-* Current application uses sqlite3 database to store users and their daily best scores. Sqlite is ok for development, but is not suitable for production use. Please switch to what you like most (MySQL, Postgresql or maybe even Oracle). Works with Postgresql out of the box.
+* Default setup uses sqlite3 database to store users and their daily best scores. Sqlite is ok for development, but is not suitable for production use. Please switch to what you like most (MySQL, Postgresql or maybe even Oracle). Works with Postgresql out of the box.
 
-* Top daily scores are fetch from database. It's better to store them in memory, e.g. using Redis list.
+* Top daily scores are fetched from database. It's better to store them in memory, e.g. using Redis list.
 
 * Application uses Python NLTK library and Wordnet text corpora to determine if submitted word is English. It's obvious that coropora does not include all known or invented English words (check Hitch-Hiker's Guide of Douglas Adams for nice examples). Therefore custom corpora might be needed.
 
