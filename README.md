@@ -21,6 +21,8 @@ python setup.py
 
 Please follow instructions at the end of setup script.
 
+Social authentication is implemented with http://django-allauth.readthedocs.org/en/latest/installation.html
+
 
 Implementation Details
 ----------------------

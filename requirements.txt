@@ -1,3 +1,4 @@
 Django==1.7.3
+django-allauth==0.19.1
 nltk==3.0.1
 git+https://github.com/macropin/django-registration.git@v1.1  # supports Django 1.7
