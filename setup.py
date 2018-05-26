@@ -68,7 +68,6 @@ After that you should be able to open project in browser at http://localhost:800
     ))
 
 
-
 if __name__ == '__main__':
     apt_get_install()
     setup_virtualenv()

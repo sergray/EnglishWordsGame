@@ -1,6 +1,9 @@
 PROJECT = ./english_words_game
 MANAGE.PY = $(PROJECT)/manage.py
 
+setup: setup.py
+	python setup.py
+
 all: run
 
 run:

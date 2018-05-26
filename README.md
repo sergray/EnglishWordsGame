@@ -35,16 +35,11 @@ Implementation Details
 
 * Load of corpora to the memory affects requirements to system memory and limits number of Python processes running the app. In order to scale, it can be implemented as separate service running on multiple machines.
 
+* Password-less login uses allauth, see https://django-allauth.readthedocs.io/en/stable/providers.html#google to set it up for Google OAuth
 
 To Do List
 ----------
 
-* Add more tests. Coverage is poor at the moment :(
-
-* Bootstrap project with Makefile or Docker
-
-* Support automated setup on Linux distributives without APT. Use cuisine, salt, pupet or chef.
-
-* Password-less registration with Facebook.
+* Dockerize
 
 * All time top-scores
