@@ -1,14 +1,14 @@
-from django.conf.urls import patterns, include, url
+from django.urls import include, path
 from django.contrib import admin
+from django.contrib.auth.views import login
 
+import words.views
+import scores.views
 
-
-urlpatterns = patterns('',
-    url(r'^$', 'scores.views.top_scores_list', name='top-scores'),
-    url('^submit/$', 'words.views.word_submission', name='word-submission'),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login',
-        {'extra_context': {'next': '/'}}, name='login'),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = [
+    path(r'', scores.views.top_scores_list, name='top-scores'),
+    path('submit/', words.views.word_submission, name='word-submission'),
+    path(r'accounts/login/', login, {'extra_context': {'next': '/'}}, name='login'),
+    path(r'accounts/', include('allauth.urls')),
+    path('admin/', admin.site.urls),
+]

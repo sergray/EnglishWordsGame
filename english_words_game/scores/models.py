@@ -12,7 +12,7 @@ class Score(models.Model):
     so at the worst (or best case) number of records will
     correspond to the number of users in the system.
     """
-    user = models.ForeignKey('auth.User')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     word_score = models.PositiveIntegerField(db_index=True)
     submitted_on = models.DateTimeField(auto_now=True,
                                         blank=True, db_index=True)
