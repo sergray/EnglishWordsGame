@@ -5,9 +5,6 @@ Submit the longest English word known to you (and to the application).
 
 Submission requires registration, but it's easy and straighforward.
 
-Can be played on http://words.sergray.me/
-
-
 Setup Instructions
 ------------------
 
