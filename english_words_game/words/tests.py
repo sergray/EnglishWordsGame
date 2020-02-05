@@ -1,9 +1,9 @@
 # coding=utf8
 "Tests for words application"
-import urlparse
+from urllib.parse import urlsplit
 
 from django.test import Client, TestCase
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 from words.forms import EnglishWordForm
@@ -57,7 +57,7 @@ class TestWordSubmissionView(TestCase):
 
     def assertLoginRedirect(self, response):
         self.assertEqual(response.status_code, 302)
-        redirect = urlparse.urlsplit(response['Location'])
+        redirect = urlsplit(response['Location'])
         self.assertEqual(redirect.path, reverse('login'))
 
     def test_login_required(self):

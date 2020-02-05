@@ -47,7 +47,6 @@ def setup_python_requirements():
 
 
 def setup_django_project():
-    call([PYTHON_PATH, './english_words_game/manage.py', 'syncdb', '--noinput'])
     call([PYTHON_PATH, './english_words_game/manage.py', 'migrate'])
     call([PYTHON_PATH, '-c', '"import nltk; nltk.download(\'wordnet\')"'])
 
