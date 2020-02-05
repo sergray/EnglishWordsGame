@@ -2,9 +2,8 @@
 
 Must be executed from the project directory.
 
-Installs needed OS packages. Sorry, only apt supported at the moment.
+Installs needed OS packages. Only apt supported at the moment.
 """
-from __future__ import print_function
 
 import os
 
@@ -20,10 +19,10 @@ PIP_PATH = os.path.join(VIRTUALENV_PATH, 'bin', 'pip')
 PYTHON_PATH = os.path.join(VIRTUALENV_PATH, 'bin', 'python')
 
 OS_PACKAGES = [
-    'python-dev',
+    'python3-dev',
     'git',  # need to install python packages from github
-    'python-pip',
-    'python-virtualenv',
+    'python3-pip',
+    'python3-virtualenv',
 ]
 
 
@@ -40,7 +39,7 @@ def apt_get_install():
 
 
 def setup_virtualenv():
-    call(['virtualenv', ENV_NAME])
+    call(['virtualenv', '-p', 'python3', ENV_NAME])
 
 
 def setup_python_requirements():

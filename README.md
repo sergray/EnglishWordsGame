@@ -13,7 +13,7 @@ There's setup.py script which automates installation on Linux distributives havi
 It should be started from the root project directory:
 
 ```
-python setup.py
+python3 setup.py
 ```
 
 Please follow instructions at the end of setup script.
