@@ -50,7 +50,7 @@ Implementation Details
 
 To Do List
 ----------
-
+* Setup Github CI
 * All time top-scores
 * Nice UI
 * Multi-language support
