@@ -10,13 +10,16 @@ import os
 from subprocess import call
 
 
-ENV_NAME = 'EnglishWordsGameEnv'
+VIRTUAL_ENV = os.getenv('VIRTUAL_ENV')
 
+ENV_NAME = 'EnglishWordsGameEnv'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-VIRTUALENV_PATH = os.path.join(PROJECT_DIR, ENV_NAME)
+# reuse existing virtual env or create new
+VIRTUALENV_PATH = VIRTUAL_ENV or os.path.join(PROJECT_DIR, ENV_NAME)
 ACTIVATE_PATH = os.path.join(VIRTUALENV_PATH, 'bin', 'activate_this.py')
 PIP_PATH = os.path.join(VIRTUALENV_PATH, 'bin', 'pip')
 PYTHON_PATH = os.path.join(VIRTUALENV_PATH, 'bin', 'python')
+
 
 OS_PACKAGES = [
     'python3-dev',
@@ -39,7 +42,8 @@ def apt_get_install():
 
 
 def setup_virtualenv():
-    call(['virtualenv', '-p', 'python3', ENV_NAME])
+    if not os.path.exists(VIRTUALENV_PATH):
+        call(['virtualenv', '-p', 'python3', ENV_NAME])
 
 
 def setup_python_requirements():
@@ -47,8 +51,8 @@ def setup_python_requirements():
 
 
 def setup_django_project():
+    call([PYTHON_PATH, '-c', '"import nltk; nltk.download(\'wordnet\', \'.\')"'])
     call([PYTHON_PATH, './english_words_game/manage.py', 'migrate'])
-    call([PYTHON_PATH, '-c', '"import nltk; nltk.download(\'wordnet\')"'])
 
 
 def running_instructions():
@@ -68,7 +72,7 @@ After that you should be able to open project in browser at http://localhost:800
 
 if __name__ == '__main__':
     apt_get_install()
-    setup_virtualenv()
+    # setup_virtualenv()
     setup_python_requirements()
     setup_django_project()
     running_instructions()

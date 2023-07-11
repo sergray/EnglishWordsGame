@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    image: words_game
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: make django_runserver
+    volumes:
+      - ./english_words_game:/usr/local/src
+      - ./Makefile:/usr/local/src/Makefile
+      - sqlite3:/usr/local/share/sqlite3
+      - nltk:/usr/local/share/nltk_data
+    environment:
+      SQLITE3_DB_DIR: /usr/local/share/sqlite3
+      NLTK_DATA: /usr/local/share/nltk_data
+      PROJECT_DIR: /usr/local/src
+    ports:
+    - "8000:8000"
+volumes:
+  nltk:
+  sqlite3:

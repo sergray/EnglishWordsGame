@@ -8,18 +8,32 @@ Submission requires registration, but it's easy and straighforward.
 Setup Instructions
 ------------------
 
-There's setup.py script which automates installation on Linux distributives having APT package manager.
+Launch development version of application using Docker Compose:
 
-It should be started from the root project directory:
-
-```
-python3 setup.py
+```shell
+docker-compose up
 ```
 
-Please follow instructions at the end of setup script.
+It will:
+* download NLTK wordnet dataset
+* prepare sqlite3 database
+* launch Django application with runserver
+
+Open http://localhost:8000/.
 
 Social authentication is implemented with http://django-allauth.readthedocs.org/en/latest/installation.html
 
+Please follow a [provider specific documentation](https://django-allauth.readthedocs.io/en/latest/providers.html) for obtaining provider credentials.
+
+Authentication provider in the application is configured using Django admin UI.
+
+Create super admin with:
+
+```shell
+docker-compose exec app ./manage.py createsuperuser
+```
+
+Then open http://localhost:8000/admin/socialaccount/socialapp/, login with super user credentials and create new social application for the chosen provider.
 
 Implementation Details
 ----------------------
@@ -37,6 +51,6 @@ Implementation Details
 To Do List
 ----------
 
-* Dockerize
-
 * All time top-scores
+* Nice UI
+* Multi-language support
